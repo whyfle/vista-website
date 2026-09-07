@@ -1,0 +1,6 @@
+{
+  "name": "Vista Package Manager",
+  "description": "Official website for Vista — the native-focus universal Linux package manager with intelligent fallback resolution and GitHub release integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

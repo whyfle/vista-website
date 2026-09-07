@@ -1,9 +1,20 @@
-# vista-website
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-Static site for [Vista](https://github.com/whyfle/vista). No build step, no
-dependencies — served via GitHub Pages at
-https://whyfle.github.io/vista-website/
+# Run and deploy your AI Studio app
 
-Files: `index.html`, `style.css`, `script.js`, `assets/vista-logo.png`.
-Style: square corners, dense, simple. To preview: `python3 -m http.server`
-in this dir.
+This contains everything you need to run your app locally.
+
+View your app in AI Studio: https://ai.studio/apps/4ca061b9-5e98-43b2-810a-6365cd8f5393
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
