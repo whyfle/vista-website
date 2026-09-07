@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vista — Universal Linux Package Manager</title>
+<meta name="description" content="Tell Vista what you want. Vista figures out how your Linux system should install it. GitHub releases in, native packages out.">
+<link rel="icon" href="assets/vista-logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#top"><img src="assets/vista-logo.png" alt="Vista logo" width="28" height="28"><b>vista</b></a>
+  <nav>
+    <a href="#install">install</a>
+    <a href="#features">features</a>
+    <a href="#cli">cli</a>
+    <a href="#distros">distros</a>
+    <a href="https://github.com/whyfle/vista">github</a>
+  </nav>
+  <button id="theme" title="toggle theme">◐</button>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img src="assets/vista-logo.png" alt="Vista logo" width="96" height="96">
+    <div>
+      <h1>vista</h1>
+      <p class="tag">Tell Vista what you want. Vista figures out how your Linux system should install it.</p>
+      <div class="install-line">
+        <code id="install-cmd">curl -fsSL https://raw.githubusercontent.com/whyfle/vista/main/install.sh | sudo bash</code>
+        <button data-copy="install-cmd">copy</button>
+      </div>
+      <p class="sub"><a href="https://github.com/whyfle/vista/releases/tag/1">Release 1</a>: .rpm / .deb / .pkg.tar.zst · <a href="https://github.com/whyfle/vista">source</a> · MIT</p>
+    </div>
+  </section>
+
+  <section id="install">
+    <h2>install</h2>
+    <div class="grid3">
+      <div class="card"><h3>one line</h3><pre>curl -fsSL https://raw.githubusercontent.com/whyfle/vista/main/install.sh | sudo bash</pre><p>Detects your distro, grabs the matching Release 1 binary, verifies sha256.</p></div>
+      <div class="card"><h3>manual</h3><pre>sudo ./install.sh        # asks once
+sudo ./install.sh --yes  # no prompt
+./install.sh --dry-run   # preview</pre><p>Fedora/RHEL/openSUSE → rpm · Debian/Ubuntu → deb · Arch → pkg.tar.zst.</p></div>
+      <div class="card"><h3>from source</h3><pre>cargo build --release
+./target/release/vista sys-info</pre><p>Rust, single ~3.7&nbsp;MB binary. No runtime deps.</p></div>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>how it resolves</h2>
+    <table class="dense">
+      <tr><td><b>1. native</b></td><td>Inspects GitHub release assets, scores them: native +100, arch +50, distro +50, stable +25, github +20. Installs the winner via dnf / apt / pacman.</td></tr>
+      <tr><td><b>2. flatpak</b></td><td>No native build? Falls back to Flathub (<code>vista install discord</code> → <code>com.discordapp.Discord</code>). Explicit <code>user@repo</code> only diverts on a real name match.</td></tr>
+      <tr><td><b>3. honest error</b></td><td>Nothing usable → clear error, never a blind install. Tarballs download with a manual-install note, never executed.</td></tr>
+      <tr><td><b>security</b></td><td>sha256 verification, arch/format checks, one confirmation prompt (<code>-y</code> to skip), auto-sudo only for the package-manager step. No piped remote scripts, no auto-ran install scripts.</td></tr>
+    </table>
+  </section>
+
+  <section id="cli">
+    <h2>cli</h2>
+    <div class="cols">
+      <table class="dense">
+        <tr><td><code>vista install &lt;pkg&gt;</code></td><td>install (alias: <code>add</code>)</td></tr>
+        <tr><td><code>vista add user@repo</code></td><td>github.com/user/repo</td></tr>
+        <tr><td><code>vista remove &lt;pkg&gt;</code></td><td>uninstall + drop from db</td></tr>
+        <tr><td><code>vista search &lt;q&gt;</code></td><td>github + flathub, one line per hit</td></tr>
+        <tr><td><code>vista info &lt;pkg&gt;</code></td><td>db entry or resolution preview</td></tr>
+      </table>
+      <table class="dense">
+        <tr><td><code>vista list</code></td><td>installed packages</td></tr>
+        <tr><td><code>vista update</code></td><td>refresh metadata cache</td></tr>
+        <tr><td><code>vista upgrade</code></td><td>upgrade via system managers</td></tr>
+        <tr><td><code>vista clean</code></td><td>wipe caches</td></tr>
+        <tr><td><code>vista sys-info</code></td><td>distro, arch, managers</td></tr>
+      </table>
+    </div>
+    <pre class="wide">vista install fastfetch-cli@fastfetch --dry-run --yes
+vista install firefox --repo user@repo --default flathub
+vista install org.prismlauncher.PrismLauncher --default flathub</pre>
+  </section>
+
+  <section id="distros">
+    <h2>distros</h2>
+    <table class="dense">
+      <tr><th>family</th><th>prefers</th><th>via</th></tr>
+      <tr><td>Fedora / RHEL / Alma / Rocky</td><td><code>.rpm</code></td><td>dnf</td></tr>
+      <tr><td>openSUSE</td><td><code>.rpm</code></td><td>dnf / zypper</td></tr>
+      <tr><td>Debian / Ubuntu / Mint / Pop</td><td><code>.deb</code></td><td>apt</td></tr>
+      <tr><td>Arch / Manjaro / EndeavourOS</td><td><code>.pkg.tar.zst</code></td><td>pacman</td></tr>
+      <tr><td>anything (fallback)</td><td>Flathub</td><td>flatpak</td></tr>
+    </table>
+    <p class="sub">x86_64/amd64 and aarch64/arm64 normalized internally. Incompatible format+arch combos are rejected, not installed.</p>
+  </section>
+
+  <footer>
+    <span>vista · <a href="https://github.com/whyfle/vista">github</a> · <a href="https://github.com/whyfle/vista/releases/tag/1">release 1</a> · MIT</span>
+    <span>config: <code>~/.config/vista/config.toml</code> · <code>GITHUB_TOKEN</code> raises api limit 60 → 5000/hr</span>
+  </footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
