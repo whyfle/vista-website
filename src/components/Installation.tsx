@@ -31,10 +31,10 @@ vista --version`,
       tag: 'Native .deb package',
       description: 'Install the native Debian package directly or use the automated installation script.',
       code: `# Download latest release .deb package:
-wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-amd64.deb
+wget https://github.com/whyfle/vista/releases/download/1/vista_0.1.0-1_amd64.deb
 
 # Install with APT (resolves dependencies automatically):
-sudo apt install ./vista-linux-amd64.deb
+sudo apt install ./vista_0.1.0-1_amd64.deb
 
 # Verify:
 vista sys-info`,
@@ -42,14 +42,13 @@ vista sys-info`,
     arch: {
       name: 'Arch Linux',
       tag: 'Arch / Pacman',
-      description: 'Compile from source via Cargo or install the pre-compiled standalone binary.',
+      description: 'Compile from source via Cargo or install the native Arch package.',
       code: `# Install via Rust Cargo:
 cargo install --git https://github.com/whyfle/vista.git
 
-# Or download and extract standalone release binary:
-wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-x86_64.tar.gz
-tar -xzf vista-linux-x86_64.tar.gz
-sudo install -m 755 vista /usr/local/bin/vista`,
+# Or install the native Arch package:
+wget https://github.com/whyfle/vista/releases/download/1/vista-0.1.0-1-x86_64.pkg.tar.zst
+sudo pacman -U ./vista-0.1.0-1-x86_64.pkg.tar.zst`,
     },
     cargo: {
       name: 'Rust Cargo / Source',

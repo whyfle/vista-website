@@ -38,18 +38,18 @@ export const QuickStartPage: React.FC<QuickStartPageProps> = ({ onNavigate }) =>
     },
     debian: {
       name: 'Debian / Ubuntu (.deb)',
-      cmd: 'wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-amd64.deb && sudo apt install ./vista-linux-amd64.deb',
+      cmd: 'wget https://github.com/whyfle/vista/releases/download/1/vista_0.1.0-1_amd64.deb && sudo apt install ./vista_0.1.0-1_amd64.deb',
       notes: 'Installs native .deb package and resolves system dependencies with APT.',
     },
     tarball: {
-      name: 'Standalone Binary',
-      cmd: 'wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-x86_64.tar.gz && tar -xzf vista-linux-x86_64.tar.gz && sudo install -m 755 vista /usr/local/bin/vista',
-      notes: 'Pre-compiled static binary tarball for Fedora, Arch, openSUSE, and any Linux distro.',
+      name: 'Fedora / RHEL (.rpm)',
+      cmd: 'wget https://github.com/whyfle/vista/releases/download/1/vista-0.1.0-1.fc44.x86_64.rpm && sudo dnf install ./vista-0.1.0-1.fc44.x86_64.rpm',
+      notes: 'Native .rpm package for Fedora, RHEL, AlmaLinux, Rocky and openSUSE.'
     },
     arch: {
       name: 'Arch Linux',
       cmd: 'cargo install --git https://github.com/whyfle/vista.git',
-      notes: 'Compiles native static binary using Rust toolchain or extract release tarball.',
+      notes: 'Compiles via Rust toolchain, or install the native .pkg.tar.zst with pacman -U.'
     },
     cargo: {
       name: 'Rust Cargo / Source',

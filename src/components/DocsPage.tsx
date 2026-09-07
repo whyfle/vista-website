@@ -295,36 +295,36 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onNavigate, initialSection =
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-bold text-white">Debian / Ubuntu (.deb Standalone)</span>
                     <button
-                      onClick={() => handleCopy('wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-amd64.deb && sudo apt install ./vista-linux-amd64.deb', 'deb')}
+                      onClick={() => handleCopy('wget https://github.com/whyfle/vista/releases/download/1/vista_0.1.0-1_amd64.deb && sudo apt install ./vista_0.1.0-1_amd64.deb', 'deb')}
                       className="px-2 py-0.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 text-[11px] cursor-pointer"
                     >
                       {copiedKey === 'deb' ? 'Copied' : 'Copy'}
                     </button>
                   </div>
                   <pre className="bg-[#06070a] p-2.5 border border-neutral-800 text-neutral-200 select-all overflow-x-auto">
-                    wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-amd64.deb && sudo apt install ./vista-linux-amd64.deb
+                    wget https://github.com/whyfle/vista/releases/download/1/vista_0.1.0-1_amd64.deb && sudo apt install ./vista_0.1.0-1_amd64.deb
                   </pre>
                   <p className="text-[11px] text-neutral-400 font-sans mt-2">
                     Pre-compiled Debian package containing stripped binary and manpages.
                   </p>
                 </div>
 
-                {/* Method 3: Standalone Tarball */}
+                {/* Method 3: Fedora / RHEL RPM */}
                 <div className="p-4 bg-neutral-900/60 border border-neutral-800 font-mono text-xs">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-white">Standalone Binary Tarball (Fedora / Arch / General Linux)</span>
+                    <span className="font-bold text-white">Fedora / RHEL (.rpm)</span>
                     <button
-                      onClick={() => handleCopy('wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-x86_64.tar.gz && tar -xzf vista-linux-x86_64.tar.gz && sudo install -m 755 vista /usr/local/bin/vista', 'tarball')}
+                      onClick={() => handleCopy('wget https://github.com/whyfle/vista/releases/download/1/vista-0.1.0-1.fc44.x86_64.rpm && sudo dnf install ./vista-0.1.0-1.fc44.x86_64.rpm', 'rpm')}
                       className="px-2 py-0.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 text-[11px] cursor-pointer"
                     >
-                      {copiedKey === 'tarball' ? 'Copied' : 'Copy'}
+                      {copiedKey === 'rpm' ? 'Copied' : 'Copy'}
                     </button>
                   </div>
                   <pre className="bg-[#06070a] p-2.5 border border-neutral-800 text-neutral-200 select-all overflow-x-auto">
-                    wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-x86_64.tar.gz && tar -xzf vista-linux-x86_64.tar.gz && sudo install -m 755 vista /usr/local/bin/vista
+                    wget https://github.com/whyfle/vista/releases/download/1/vista-0.1.0-1.fc44.x86_64.rpm && sudo dnf install ./vista-0.1.0-1.fc44.x86_64.rpm
                   </pre>
                   <p className="text-[11px] text-neutral-400 font-sans mt-2">
-                    Pre-compiled static binary tarball. Works on any modern Linux distribution without dependencies.
+                    Native RPM package with dependency resolution via DNF.
                   </p>
                 </div>
 

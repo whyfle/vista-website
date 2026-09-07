@@ -18,8 +18,8 @@ curl -fsSL https://raw.githubusercontent.com/whyfle/vista/main/install.sh | sudo
 # Test installation:
 vista --version`,
     debian: `# Install native .deb package on Debian / Ubuntu / Mint:
-wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-amd64.deb
-sudo apt install ./vista-linux-amd64.deb
+wget https://github.com/whyfle/vista/releases/download/1/vista_0.1.0-1_amd64.deb
+sudo apt install ./vista_0.1.0-1_amd64.deb
 
 # Verify installation:
 vista sys-info`,
@@ -34,12 +34,23 @@ sudo cp target/release/vista /usr/local/bin/
 
 # Verify single static binary (~3.7MB):
 vista sys-info`,
-    manual: `# Download pre-compiled release binary:
-wget https://github.com/whyfle/vista/releases/latest/download/vista-linux-x86_64.tar.gz
+    manual: `# Direct per-distro downloads from Release 1
+# (https://github.com/whyfle/vista/releases/tag/1):
 
-# Extract and install:
-tar -xzf vista-linux-x86_64.tar.gz
-sudo install -m 755 vista /usr/local/bin/vista
+# Fedora / RHEL / openSUSE:
+wget https://github.com/whyfle/vista/releases/download/1/vista-0.1.0-1.fc44.x86_64.rpm
+sudo dnf install ./vista-0.1.0-1.fc44.x86_64.rpm
+
+# Arch / Manjaro:
+wget https://github.com/whyfle/vista/releases/download/1/vista-0.1.0-1-x86_64.pkg.tar.zst
+sudo pacman -U ./vista-0.1.0-1-x86_64.pkg.tar.zst
+
+# Verify checksum first (recommended):
+wget https://github.com/whyfle/vista/releases/download/1/checksums.txt
+sha256sum -c --ignore-missing checksums.txt
+
+# Download hiccup (GitHub CDN 5xx)? Just re-run — install.sh retries
+# with backoff and resolves a fresh CDN URL automatically.
 
 # Run self-test:
 vista sys-info`,
@@ -119,7 +130,7 @@ vista sys-info`,
                 {activeTab === 'script' && 'Universal script with auto-distro detection (Arch, Debian, Ubuntu, Fedora)'}
                 {activeTab === 'debian' && 'Native .deb package with automated dependency resolution'}
                 {activeTab === 'cargo' && 'Single binary (~3.7MB) compiled from git repository'}
-                {activeTab === 'manual' && 'Precompiled release tarball without dependencies'}
+                {activeTab === 'manual' && 'Direct .rpm / .deb / .pkg.tar.zst downloads + checksums'}
               </span>
 
               <button
