@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { VistaLogo } from './VistaLogo';
 import { Copy, Check, ArrowRight, Terminal } from 'lucide-react';
 
 interface HeroProps {
@@ -24,20 +23,15 @@ export const Hero: React.FC<HeroProps> = ({
     <section id="hero-section" className="relative border-b border-neutral-800 square-grid py-12 sm:py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <div className="lg:col-span-7">
-            {/* Eye Logo & Title Tag */}
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-1 border border-neutral-800 bg-neutral-950">
-                <VistaLogo size={32} />
-              </div>
-              <div>
-                <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 block">
-                  Universal Linux Package Manager
-                </span>
-                <span className="font-mono text-sm text-neutral-300">
-                  Built in Rust • Native Focus
-                </span>
-              </div>
+          <div className="lg:col-span-12">
+            {/* Title Tag */}
+            <div className="mb-4">
+              <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 block">
+                Universal Linux Package Manager
+              </span>
+              <span className="font-mono text-sm text-neutral-300">
+                Built in Rust • Native Focus
+              </span>
             </div>
 
             {/* Main Headline */}
@@ -111,50 +105,6 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
           </div>
 
-          {/* Right Column: Official Logo Showcase Card */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="w-full max-w-sm border border-neutral-800 bg-[#090a0d] p-6 flex flex-col items-center text-center relative shadow-2xl">
-              <div className="w-full flex items-center justify-between pb-3 mb-4 border-b border-neutral-800/80 font-mono text-[10px] text-neutral-400 uppercase tracking-wider">
-                <span className="flex items-center gap-1.5 text-white font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  Official Emblem
-                </span>
-                <span className="px-1.5 py-0.5 border border-neutral-800 bg-neutral-900 text-neutral-300">
-                  v0.1.0
-                </span>
-              </div>
-
-              <div className="relative group my-2">
-                <div className="p-3 border border-neutral-700 bg-black rounded shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
-                  <VistaLogo size={192} className="rounded" />
-                </div>
-              </div>
-
-              <div className="mt-4 space-y-1">
-                <div className="font-mono text-base font-bold text-white tracking-wider">
-                  VISTA LINUX
-                </div>
-                <p className="text-[11px] font-sans text-neutral-400 max-w-xs leading-relaxed">
-                  Universal Native-First Distro Resolver
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-neutral-800/80 w-full grid grid-cols-3 gap-1.5 text-[10px] font-mono text-neutral-400">
-                <div className="p-1.5 bg-neutral-950 border border-neutral-800/60">
-                  <span className="text-white block font-bold">1024px</span>
-                  <span>Master</span>
-                </div>
-                <div className="p-1.5 bg-neutral-950 border border-neutral-800/60">
-                  <span className="text-white block font-bold">Rust</span>
-                  <span>Engine</span>
-                </div>
-                <div className="p-1.5 bg-neutral-950 border border-neutral-800/60">
-                  <span className="text-white block font-bold">SHA-256</span>
-                  <span>Verified</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Square Grid Technical Metric Strip */}

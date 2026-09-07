@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { VistaLogo } from './VistaLogo';
 import {
   Copy,
   Check,
@@ -173,20 +172,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-7">
-              {/* Eye Logo & Title Tag */}
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-1 border border-neutral-800 bg-neutral-950">
-                  <VistaLogo size={32} />
-                </div>
-                <div>
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-neutral-400 block">
-                    Universal Linux Package Manager
-                  </span>
-                  <span className="font-mono text-xs text-neutral-300">
-                    Written in Rust • Native Focus
-                  </span>
-                </div>
+            <div className="lg:col-span-12">
+              {/* Title Tag */}
+              <div className="mb-4">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-neutral-400 block">
+                  Universal Linux Package Manager
+                </span>
+                <span className="font-mono text-xs text-neutral-300">
+                  Written in Rust • Native Focus
+                </span>
               </div>
 
               {/* Main Headline */}
@@ -248,7 +242,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <span>Documentation</span>
                 </button>
                 <a
-                  href="https://github.com/vista-cli/vista"
+                  href="https://github.com/whyfle/vista"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-neutral-400 hover:text-neutral-200 transition-colors"
@@ -258,55 +252,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Right Column: Prominent Official Logo Emblem Showcase */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="w-full max-w-sm border border-neutral-800 bg-[#090a0d] p-6 flex flex-col items-center text-center relative shadow-2xl">
-                {/* Header Tag */}
-                <div className="w-full flex items-center justify-between pb-3 mb-4 border-b border-neutral-800/80 font-mono text-[10px] text-neutral-400 uppercase tracking-wider">
-                  <span className="flex items-center gap-1.5 text-white font-semibold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Official Emblem
-                  </span>
-                  <span className="px-1.5 py-0.5 border border-neutral-800 bg-neutral-900 text-neutral-300">
-                    v0.1.0
-                  </span>
-                </div>
-
-                {/* The Prominent Eye Logo */}
-                <div className="relative group my-2">
-                  <div className="p-3 border border-neutral-700 bg-black rounded shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
-                    <VistaLogo size={192} className="rounded" />
-                  </div>
-                </div>
-
-                {/* Identity Metadata */}
-                <div className="mt-4 space-y-1">
-                  <div className="font-mono text-base font-bold text-white tracking-wider">
-                    VISTA LINUX
-                  </div>
-                  <p className="text-[11px] font-sans text-neutral-400 max-w-xs leading-relaxed">
-                    Native-First Distro Resolution & Binary Integrity
-                  </p>
-                </div>
-
-                {/* Technical Badges */}
-                <div className="mt-4 pt-3 border-t border-neutral-800/80 w-full grid grid-cols-3 gap-1.5 text-[10px] font-mono text-neutral-400">
-                  <div className="p-1.5 bg-neutral-950 border border-neutral-800/60">
-                    <span className="text-white block font-bold">1024px</span>
-                    <span>Master</span>
-                  </div>
-                  <div className="p-1.5 bg-neutral-950 border border-neutral-800/60">
-                    <span className="text-white block font-bold">Rust</span>
-                    <span>Engine</span>
-                  </div>
-                  <div className="p-1.5 bg-neutral-950 border border-neutral-800/60">
-                    <span className="text-white block font-bold">SHA-256</span>
-                    <span>Verified</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
 
           {/* High Density Metric Strip */}
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 border-t border-l border-neutral-800">
