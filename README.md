@@ -1,20 +1,31 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+<img width="180" alt="Vista logo" src="public/vista.png" />
 </div>
 
-# Run and deploy your AI Studio app
+# vista-website
 
-This contains everything you need to run your app locally.
+Official website for [Vista](https://github.com/whyfle/vista) — the native-focus universal Linux package manager. Live at https://whyfle.github.io/vista-website/
 
-View your app in AI Studio: https://ai.studio/apps/4ca061b9-5e98-43b2-810a-6365cd8f5393
+React + Vite + Tailwind. Hero, CLI cheatsheet, scoring visualizer, terminal simulator, install/config guides.
 
-## Run Locally
+## Run locally
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run lint     # tsc --noEmit
+npm run build    # -> dist/
+```
 
+## Deploy
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+`main` holds source. The built `dist/` ships on the `gh-pages` branch, which GitHub Pages serves. `vite.config.ts` sets `base: '/vista-website/'` — required for project-Pages asset paths. After changing source:
+
+```bash
+npm run build
+# push dist/ to gh-pages, push source to main
+```
+
+## Layout
+
+`src/components/` (Navbar, Hero, InstallGuide, CliCheatsheet, ScoringVisualizer, TerminalSimulator, ConfigGuide, …), `src/App.tsx`, `public/` (favicons, og images), `index.html`.
